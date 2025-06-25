@@ -1,0 +1,18 @@
+#service-booking-form {
+    margin: 20px 0;
+}
+#service-booking-form label {
+    display:block;
+    margin-top:10px;
+}
+#trainer-container {
+    margin-top:10px;
+}
+
+.sb-step {
+    margin-bottom: 20px;
+}
+
+.sb-step button {
+    margin-top: 10px;
+}
