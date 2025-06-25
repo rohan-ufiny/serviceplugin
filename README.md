@@ -1,15 +1,22 @@
 # Service Booking Plugin
 
-This repository contains a sample WordPress plugin that allows customers to book services with trainers and checkout via WooCommerce. The booking form is a multi-step flow where users pick a service, choose a date and time, select an available trainer and then review the booking before proceeding to the cart.
+This repository contains a WordPress plugin that lets customers book services with specific trainers and pay via WooCommerce. The plugin now includes a comprehensive multi-step booking form, trainer dashboards, REST API endpoints, daily reminder emails and more.
 
 ## Installation
+1. Copy the `service-booking` directory to your `wp-content/plugins` folder.
+2. Activate **Service Booking** from the admin Plugins page.
+3. Create services via the **Services** custom post type. For each service, add the WooCommerce product ID as custom field `product_id`.
+4. Create trainer accounts using the **Trainer** role. Optionally set their available service IDs in `service_booking_services` and a numeric `trainer_rating` meta field.
+5. Add the `[service_booking]` shortcode to any page to display the booking form.
+6. Trainers can manage upcoming bookings with the `[trainer_dashboard]` shortcode.
 
-1. Copy the `service-booking` directory to your WordPress `wp-content/plugins` folder.
-2. Activate **Service Booking** from the WordPress admin plugins screen.
-3. Create services using the **Services** custom post type in the dashboard. Each service should have a linked WooCommerce product (add the product ID as custom field `product_id`).
-4. Create users with the role **Trainer** and set the custom field `service_booking_services` to a serialized array of service IDs they can perform.
-5. Use the shortcode `[service_booking]` on any page to display the booking form.
-6. Trainers can view their assigned bookings with the `[trainer_dashboard]` shortcode.
-7. Add optional trainer ratings by setting the user meta `trainer_rating` (0-5). Ratings appear beside trainer names during selection.
+## Features
+- Custom post types for Services and Bookings
+- Trainer role with profile fields for rating and availability
+- Multi-step AJAX booking form with realtime trainer availability
+- Bookings added to WooCommerce cart and linked to orders
+- Daily reminder emails and cleanup of old bookings
+- REST API endpoints for listing and creating bookings
+- CSV export and optional import utilities
 
-This plugin is a minimal demonstration and may require further customization for production use.
+This plugin is provided as an example and may require additional customization before use in production.
