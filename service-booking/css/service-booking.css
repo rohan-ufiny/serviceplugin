@@ -16,3 +16,19 @@
 .sb-step button {
     margin-top: 10px;
 }
+
+#sb-progress {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+#sb-progress div {
+    flex: 1;
+    height: 4px;
+    background: #e0e0e0;
+    margin-right: 5px;
+}
+
+#sb-progress div.active {
+    background: #0073aa;
+}

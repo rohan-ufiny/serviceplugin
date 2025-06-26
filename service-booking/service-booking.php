@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Service Booking
  * Description: Comprehensive service booking system with trainer dashboards and WooCommerce integration.
- * Version: 2.0
+ * Version: 2.1
  * Author: ChatGPT
  *
  * This plugin provides a complete example of how to build a production-ready
@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Service_Booking_Plugin {
 
     /** Version constant. */
-    const VERSION = '2.0';
+    const VERSION = '2.1';
 
     /**
      * Constructor registers all hooks.
@@ -410,6 +410,12 @@ class Service_Booking_Plugin {
         ob_start();
         ?>
         <form id="service-booking-form">
+            <div id="sb-progress">
+                <div class="bar step1 active"></div>
+                <div class="bar step2"></div>
+                <div class="bar step3"></div>
+                <div class="bar step4"></div>
+            </div>
             <div class="sb-step sb-step-1">
                 <label for="service">Choose Service:</label>
                 <select name="service" id="service">
@@ -557,9 +563,12 @@ class Service_Booking_Plugin {
         update_post_meta( $booking_id, 'trainer_id', $trainer_id );
 
         if ( class_exists( 'WC_Cart' ) ) {
-            WC()->cart->add_to_cart( $product_id, 1, array(), array( 'booking_id' => $booking_id ) );
+            WC()->cart->add_to_cart( $product_id, 1, 0, array(), array( 'booking_id' => $booking_id ) );
+            $redirect = function_exists( 'wc_get_cart_url' ) ? wc_get_cart_url() : home_url();
+        } else {
+            $redirect = home_url();
         }
-        wp_send_json_success( array( 'redirect' => wc_get_cart_url() ) );
+        wp_send_json_success( array( 'redirect' => $redirect ) );
     }
 
     /* --------------------------------------------------------------------- */

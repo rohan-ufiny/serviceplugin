@@ -13,8 +13,8 @@ This repository contains a WordPress plugin that lets customers book services wi
 ## Features
 - Custom post types for Services and Bookings
 - Trainer role with profile fields for rating and availability
-- Multi-step AJAX booking form with realtime trainer availability
-- Bookings added to WooCommerce cart and linked to orders
+- Multi-step AJAX booking form with realtime trainer availability and progress bar
+- Bookings added to WooCommerce cart and linked to orders (requires WooCommerce)
 - Daily reminder emails and cleanup of old bookings
 - REST API endpoints for listing and creating bookings
 - CSV export and optional import utilities

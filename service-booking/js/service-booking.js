@@ -6,6 +6,8 @@ jQuery(function($){
         step = n;
         form.find('.sb-step').hide();
         form.find('.sb-step-' + step).show();
+        $('#sb-progress .bar').removeClass('active');
+        $('#sb-progress .step' + step).addClass('active');
     }
 
     form.on('click','.sb-next',function(e){
